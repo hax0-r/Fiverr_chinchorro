@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: url(./Docs/Assets/pincils.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky w-full text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="./index.html" class="navUnderLine "> Inicio</a></li>
+                        <li class="relative group"><a href="./servicio-local.html"
+                                class="navUnderLine text-[#ff798a] flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href="./centro-de-documentacion.html"
+                                    class=" text-nowrap border text-[#ff798a] bg-white  text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="./establecimientos-educacionales.html" class="navUnderLine"> Establecimiento
+                                Educacionales</a></li>
+                        <li><a href="./noticias.html" class="navUnderLine"> Noticias</a></li>
+                        <li><a href="./participacion-ciudadana.html" class="navUnderLine"> Participaci6n</a></li>
+                        <li><a href="./bienestar.html" class="navUnderLine"> Servicio de Bienestar</a></li>
+                        <li><a href="https://intranet.slepch.cl/sl/" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="./index.html" class="text-nowrap block p-5"> Inicio</a></li>
+                    <li><a href="./servicio-local.html" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="./centro-de-documentacion.html" class="text-nowrap  block p-5 bg-[#ff798a] "> Centro de
+                            Documentaci6n</a></li>
+                    <li><a href="./establecimientos-educacionales.html" class="text-nowrap  block p-5"> Establecimiento
+                            Educacionales</a></li>
+                    <li><a href="./noticias.html" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="./participacion-ciudadana.html" class="text-nowrap  block p-5"> Participaci6n</a></li>
+                    <li><a href="./bienestar.html" class="text-nowrap  block p-5"> Servicio de Bienestar</a></li>
+                    <li><a href="https://intranet.slepch.cl/sl/" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl ">Centro de Documentación</h1>
+            <p class="md:text-2xl text-lg md:mt-6 mt-4 font-medium px-2">Te invitamos a ver las informaciones y
+                documentación asociadas a múltiples iniciativas.</p>
+        </div>
+    </div>
+
+    <div class="bg-zinc-100 w-full">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <main class="bg-light-blue">
+                <div class="flex justify-center items-start my-2">
+                    <div class="w-full my-1">
+                        <h2 class="font-semibold text-vnet-blue mb-2">PROTOCOLOS, PROCEDIMIENTOS, MANUALES Y
+                            DECLARACIONES </h2>
+                        <div class="w-full h-0.5 mb-5 rounded-full bg-blue-400"></div>
+                        <ul class="flex flex-col">
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(1)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">Procedimiento de Verificaci6n y Descuento de Pensi6n de
+                                        Alimentos</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(2)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">Declaraciön sobre Abandono de Familia y Pago de Pensiones
+                                        Alimenticias</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(3)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">Acceso y cobertura de Sala Cuna del Servicio Local de Educaciön
+                                        Püblica de Chinchorro</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(4)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">Manual de prevenciön de delitos funcionarios, lavado de activos y
+                                        financiamiento del terrorismo</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li>Manual de prevencién de Delitos funcionarios Lavado de Activos y
+                                            Financiamiento al Terrorismo</li>
+                                        <li>Denuncia con Reserva de Identidad ROS</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(5)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">Manual de practica laboral</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto p-5 mt-10">
+        <main class="bg-light-blue">
+            <div class="flex justify-center items-start my-2">
+                <div class="w-full my-1">
+                    <h2 class="font-semibold text-vnet-blue mb-2">Instrumentos de Gestión</h2>
+                    <div class="w-full h-0.5 mb-5 rounded-full md:max-w-[50%] bg-blue-400"></div>
+
+                    <div class="flex md:flex-row flex-col gap-8">
+                        <div class="md:max-w-[50%] w-full">
+                            <h2 class="mt-5 font-semibold mb-5">Plan Estratégico Local</h2>
+                            <ul class="flex flex-col">
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(6)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">2020-2026</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PEL - SLEP Chinchorro</li>
+                                            <li>REX PEL Chinchorro</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:max-w-[50%] w-full">
+                            <h2 class="mt-5 font-semibold mb-5">Plan Anual</h2>
+                            <ul class="flex flex-col">
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(7)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">2024</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>Plan Anual Local 2024</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(8)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">2023</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>Plan Anual Local 2024</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(9)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">2022</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>Plan Anual Local 2024</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(10)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">2021</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>Plan Anual Local 2024</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(11)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">2020</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>Plan Anual Local 2024</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="bg-zinc-100 w-full md:mt-10 mt-6 md:py-10 py-7">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <main class="bg-light-blue">
+                <div class="flex justify-center items-start my-2">
+                    <div class="w-full my-1">
+                        <h2 class="font-semibold text-vnet-blue mb-2">Fondo de Emergencia Transitorio FET COVID-19 </h2>
+                        <div class="w-full h-0.5 mb-5 rounded-full bg-blue-400"></div>
+                        <ul class="flex flex-col">
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(12)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">FET COVID-19 2022</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li> INFORME MENSUAL ENERO EJECUCIÖN FONDOS FET COVID V.B.</li>
+                                        <li> INFORME MENSUAL FEBRERO EJECUCIÖN FONDOS FET COVID. Mod</li>
+                                        <li> INFORME MENSUAL MARZO EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> INFORME MENSUAL ABRIL EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> INFORME MENSUAL MAYO EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> INFORME MENSUAL JUNIO EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> INFORME MENSUAL JULIO EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> INFORME MENSUAL AGOSTO EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> INFORME MENSUAL</li>
+                                        <li> INFORME MENSUAL</li>
+                                        <li> INFORME MENSUAL</li>
+                                        <li> INFORME MENSUAL</li>
+                                        <li> SEPTIEMBRE EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> OCTUBRE EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> NOVIEMBRE EJECUCIÖN FONDOS FET COVID</li>
+                                        <li> DICIEMBRE EJECUCIÖN FONDOS FET COVID</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(13)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">FET COVID-19 2021</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li> Enero 2021</li>
+                                        <li> Febrero 2021</li>
+                                        <li> Marzo 2021</li>
+                                        <li> Abril 2021</li>
+                                        <li> Mayo 2021</li>
+                                        <li> Junio 2021</li>
+                                        <li> Julio 2021</li>
+                                        <li> Agosto 2021</li>
+                                        <li> Septiembre 2021</li>
+                                        <li> octubre 2021</li>
+                                        <li> Noviembre 2021</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                x-data="accordion(14)">
+                                <h2 @click="handleClick()"
+                                    class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                    <span class="">Reportes Presupuesto-Ejecuciön FET COVID-19 Mejoramiento de
+                                        Infraestructura Escolar Püblica-Servicio Local de Chinchorro Enero
+                                        2021- Junio 2022</span>
+                                    <i :class="handleRotate()"
+                                        class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                </h2>
+                                <div x-ref="tab" :style="handleToggle()"
+                                    class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                    <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                        <li> ENERO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> FEBRERO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION
+                                            CHINCHORRO</li>
+                                        <li> MARZO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> ABRIL 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> MAYO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> JUNIO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> JULIO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> AGOSTO 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION CHINCHORRO
+                                        </li>
+                                        <li> SEPTIEMBRE 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION
+                                            CHINCHORRO</li>
+                                        <li> OCTUBRE 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION
+                                            CHINCHORRO</li>
+                                        <li> NOVIEMBRE 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION
+                                            CHINCHORRO</li>
+                                        <li> DICIEMBRE 2021 EJECUCION PRESUPUESTARIA SERVICIO LOCAL DE EDUCACION
+                                            CHINCHORRO</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto p-5">
+        <main class="bg-light-blue">
+            <div class="flex justify-center items-start my-2">
+                <div class="w-full my-1">
+                    <h2 class="font-semibold text-vnet-blue mb-2">Ley de Presupuesto</h2>
+                    <div class="w-full h-0.5 mb-5 rounded-full bg-blue-400"></div>
+                    <ul class="flex flex-col">
+                        <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                            x-data="accordion(15)">
+                            <h2 @click="handleClick()"
+                                class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                <span class="">Presupuesto 2024 -
+                                    Glosas DIPRES Programa 01 y 02</span>
+                                <i :class="handleRotate()"
+                                    class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                            </h2>
+                            <div x-ref="tab" :style="handleToggle()"
+                                class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                  <li>  DIPRES GLOSAS DEP-SLE - MARZO 2024</li>
+                                  <li>  DIPRES GLOSAS DEP-SLE - MARZO 2024</li>
+                                  <li>  DIPRES GLOSAS DEP-SLE - JUNIO 2024</li>
+                                  <li>  DIPRES GLOSAS DEP-SLE - JUNIO 2024</li>
+                                  <li>  DIPRES GLOSAS DEP-SLE - SEPTIEMBRE 2024</li>
+                                  <li>  DIPRES GLOSAS DEP-SLE - SEPTIEMBRE 2024</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                            x-data="accordion(16)">
+                            <h2 @click="handleClick()"
+                                class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                <span class="">Presupuesto 2024 -
+                                    Programa 01 y Programa 02</span>
+                                <i :class="handleRotate()"
+                                    class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                            </h2>
+                            <div x-ref="tab" :style="handleToggle()"
+                                class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                   <li> Presupuesto POI 2024</li>
+                                   <li> Presupuesto P02 2024</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                            x-data="accordion(17)">
+                            <h2 @click="handleClick()"
+                                class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                <span class="">presupuesto 2023 -
+                                    Glosas DIPRES programa 01 y 02</span>
+                                <i :class="handleRotate()"
+                                    class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                            </h2>
+                            <div x-ref="tab" :style="handleToggle()"
+                                class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                   <li> GLOSAS CHINCHORRO A MARZO 2023</li>
+                                   <li> GLOSAS CHINCHORRO A MARZO 2023</li>
+                                   <li> POI DIPRES</li>
+                                   <li> P02 DIPRES</li>
+                                   <li> GLOSAS CHINCHORRO A JUNIO 2023 POI DIPRES</li>
+                                   <li> GLOSAS CHINCHORRO A JUNIO 2023 P02 DIPRES</li>
+                                   <li> DIPRES GLOSAS DEP-SLE - A SEPTIEMBRE 2023 DIPRES POI</li>
+                                   <li> DIPRES GLOSAS DEP-SLE - A SEPTIEMBRE 2023 DIPRES P02</li>
+                                   <li> DIPRES GLOSAS DEP-SLE - A DICIEMBRE 2023 DIPRES POI</li>
+                                   <li> DIPRES GLOSAS DEP-SLE - A DICIEMBRE 2023 DIPRES P02</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <div class="bg-[#393939] text-white flex flex-col items-center justify-center text-center p-5 py-14">
+        <a href="#" class="transition-all duration-500 hover:text-[#fec96b] font-semibold">Centro de Documentación</a>
+        <p class="mt-10 ">Sitios de interés:</p>
+        <div class="flex flex-wrap text-center justify-center items-center text-zinc-300 mt-5 gap-2 ">
+            <a href="https://educacionpublica.gob.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Dirección de Educación Pública</a> | <a
+                href="https://www.mineduc.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Ministerio de
+                Educación</a> | <a href="https://www.sistemadeadmisionescolar.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Sistema de Admisión Escolar</a> | <a
+                href="https://www.agenciaeducacion.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Agencia
+                de Calidad de la Educación</a>
+            | <a href="https://www.junaeb.cl/" class="transition-all duration-500 hover:text-[#fec96b]"> Junaeb</a>
+        </div>
+        <div class="flex items-center justify-center gap-5 mt-10">
+            <i title="Facebook" class="fa-brands cursor-pointer fa-facebook-f text-2xl text-zinc-300"></i>
+            <i title="Twitter" class="fa-brands cursor-pointer fa-twitter text-2xl text-zinc-300"></i>
+        </div>
+    </div>
+
+    <div id="scrollToTop" class="hidden fastFadeIn">
+        <div
+            class="w-14 h-9 border border-b-0 cursor-pointer flex items-center fixed bottom-0 right-10 bg-zinc-700 text-white justify-center rounded-t-lg">
+            <i class="fa-solid fa-chevron-up pt-1.5"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+</body>
+
+</html>
