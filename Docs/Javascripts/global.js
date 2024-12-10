@@ -13,30 +13,31 @@ const logoBlack = document.getElementById("logoBlack");
 const resNav = document.getElementById("resNav");
 const openNav = document.getElementById("openNav");
 const closeNav = document.getElementById("closeNav");
+const scrollToTop = document.getElementById("scrollToTop");
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
         logoBlack.style.display = "block";
         navScroll.style.position = "fixed"
         navScroll.style.borderBottom = "1.5px solid #f4f4f5";
-    } 
+        scrollToTop.style.display = "block"
+    }
     else if (window.scrollY > 65) {
         navScroll.style.background = "#fff";
         navScroll.style.borderBottom = "0px solid gray";
-        navScroll.style.color = "#000";     
+        navScroll.style.color = "#000";
         logoWhite.style.display = "none";
         logoBlack.style.display = "block";
-    } 
+        scrollToTop.style.display = "none"
+    }
     else {
         navScroll.style.position = "sticky"
-        navScroll.style.background = "transparent"; 
-        navScroll.style.color = "#fff";           
+        navScroll.style.background = "transparent";
+        navScroll.style.color = "#fff";
         logoWhite.style.display = "block";
         logoBlack.style.display = "none";
     }
 });
-
-
 
 openNav.addEventListener('click', () => {
     resNav.style.width = "100%";
@@ -45,6 +46,11 @@ closeNav.addEventListener('click', () => {
     resNav.style.width = "0%";
 })
 
+scrollToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top:0
+    })
+})
 
 const SearchMenu = () => {
     addEventListener('click', () => {

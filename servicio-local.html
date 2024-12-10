@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: url(./Docs/Assets/servicesBg.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky w-full text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="./index.html" class="navUnderLine"> Inicio</a></li>
+                        <li class="relative group"><a href="./servicio-local.html"
+                                class="navUnderLine  text-[#ff798a] flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href="./centro-de-documentacion.html"
+                                    class=" text-nowrap border bg-white text-black text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="./establecimientos-educacionales.html" class="navUnderLine"> Establecimiento
+                                Educacionales</a></li>
+                        <li><a href="./noticias.html" class="navUnderLine"> Noticias</a></li>
+                        <li><a href="./participacion-ciudadana.html" class="navUnderLine"> Participaci6n</a></li>
+                        <li><a href="./bienestar.html" class="navUnderLine"> Servicio de Bienestar</a></li>
+                        <li><a href="https://intranet.slepch.cl/sl/" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="./index.html" class="text-nowrap bg-[#ff798a] block p-5"> Inicio</a></li>
+                    <li><a href="./servicio-local.html" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="./centro-de-documentacion.html" class="text-nowrap  block p-5"> Centro de
+                            Documentaci6n</a></li>
+                    <li><a href="./establecimientos-educacionales.html" class="text-nowrap  block p-5"> Establecimiento
+                            Educacionales</a></li>
+                    <li><a href="./noticias.html" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="./participacion-ciudadana.html" class="text-nowrap  block p-5"> Participaci6n</a></li>
+                    <li><a href="./bienestar.html" class="text-nowrap  block p-5"> Servicio de Bienestar</a></li>
+                    <li><a href="https://intranet.slepch.cl/sl/" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl ">SERVICIO LOCAL
+            </h1>
+        </div>
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto flex md:flex-row gap-5 flex-col p-5 md:py-16 py-8">
+        <div class="md:max-w-[50%] w-full">
+            <h2 class=" font-bold md:text-3xl text-2xl">Nuestro Territorio
+            </h2>
+            <div class="md:w-48 w-40 rounded-full h-1 mb-6 mt-5 bg-[#ff3c4c] "></div>
+            <p>El Servicio Local de Educación Pública de Chinchorro está conformado por cuatro comunas de la Región de
+                Arica y Parinacota: Arica, Camarones, Putre y General Lagos entregando el servicio educacional a más de
+                19.000 estudiantes en el territorio, desde educación inicial a enseñanza media.
+                <br><br>
+                Brindar un servicio educacional de calidad y con equidad, a través del mejoramiento y fortalecimiento de
+                los Establecimientos Educacionales Públicos de la región de Arica y Parinacota, mediante un trabajo
+                colaborativo y participativo, promoviendo la interculturalidad territorial dirigido a los estudiantes y
+                sus familias.
+                <br><br>
+                El Servicio Local de Chinchorro tiene como sellos la calidad, la inclusión e interculturalidad, el foco
+                en la educación ambiental y el impulso a la movilidad social.
+            </p>
+
+        </div>
+        <div class="md:max-w-[50%] w-full">
+            <img src="./Docs/Assets/map.png" class="w-full md:max-w-[15rem] mx-auto" alt="">
+        </div>
+    </div>
+
+    <div class="bg-[#393939] text-white flex flex-col items-center justify-center text-center p-5 py-14">
+        <a href="#" class="transition-all duration-500 hover:text-[#fec96b] font-semibold">Centro de Documentación</a>
+        <p class="mt-10 ">Sitios de interés:</p>
+        <div class="flex flex-wrap text-center justify-center items-center text-zinc-300 mt-5 gap-2 ">
+            <a href="https://educacionpublica.gob.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Dirección de Educación Pública</a> | <a
+                href="https://www.mineduc.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Ministerio de
+                Educación</a> | <a href="https://www.sistemadeadmisionescolar.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Sistema de Admisión Escolar</a> | <a
+                href="https://www.agenciaeducacion.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Agencia
+                de Calidad de la Educación</a>
+            | <a href="https://www.junaeb.cl/" class="transition-all duration-500 hover:text-[#fec96b]"> Junaeb</a>
+        </div>
+        <div class="flex items-center justify-center gap-5 mt-10">
+            <i title="Facebook" class="fa-brands cursor-pointer fa-facebook-f text-2xl text-zinc-300"></i>
+            <i title="Twitter" class="fa-brands cursor-pointer fa-twitter text-2xl text-zinc-300"></i>
+        </div>
+    </div>
+
+    <div id="scrollToTop" class="hidden fastFadeIn">
+        <div
+            class="w-14 h-9 border border-b-0 cursor-pointer flex items-center fixed bottom-0 right-10 bg-zinc-700 text-white justify-center rounded-t-lg">
+            <i class="fa-solid fa-chevron-up pt-1.5"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+</body>
+
+</html>

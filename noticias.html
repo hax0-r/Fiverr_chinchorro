@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: url(./Docs/Assets/girl.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky z-20 w-full text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="./index.html" class="navUnderLine"> Inicio</a></li>
+                        <li class="relative group"><a href="./servicio-local.html"
+                                class="navUnderLine flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href="./centro-de-documentacion.html"
+                                    class=" text-nowrap border bg-white text-black text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="./establecimientos-educacionales.html" class="navUnderLine"> Establecimiento
+                                Educacionales</a></li>
+                        <li><a href="./noticias.html" class="navUnderLine  text-[#ff798a]"> Noticias</a></li>
+                        <li><a href="./participacion-ciudadana.html" class="navUnderLine"> Participaci6n</a></li>
+                        <li><a href="./bienestar.html" class="navUnderLine"> Servicio de Bienestar</a></li>
+                        <li><a href="https://intranet.slepch.cl/sl/" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="./index.html" class="text-nowrap bg-[#ff798a] block p-5"> Inicio</a></li>
+                    <li><a href="./servicio-local.html" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="./centro-de-documentacion.html" class="text-nowrap  block p-5"> Centro de
+                            Documentaci6n</a></li>
+                    <li><a href="./establecimientos-educacionales.html" class="text-nowrap  block p-5"> Establecimiento
+                            Educacionales</a></li>
+                    <li><a href="./noticias.html" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="./participacion-ciudadana.html" class="text-nowrap  block p-5"> Participaci6n</a></li>
+                    <li><a href="./bienestar.html" class="text-nowrap  block p-5"> Servicio de Bienestar</a></li>
+                    <li><a href="https://intranet.slepch.cl/sl/" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl "><span
+                    class="block p-2 md:w-[20rem] mx-auto md:mb-4 mb-2 bg-[#f8d63c66] rounded-md"> NOTICIAS</span></h1>
+        </div>
+    </div>
+
+
+    <div class="md:py-16 py-8">
+        <div class="max-w-7xl w-full mx-auto p-5">
+
+            <div class="grid max-w-6xl mx-auto w-full md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+
+                <div class="w-full border overflow-hidden rounded-t-lg">
+                    <div class="relative group">
+                        <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                        <div
+                            class="bg-[#fec96bcc] scale-0 text-white transition-all duration-500 font-semibold group-hover:scale-100 w-full h-full text-center group-hover:p-5 rounded-lg flex items-center justify-center overflow-hidden absolute top-0 left-0">
+                            MINEDUC y
+                            'p gesarrollan 'eI JI Congreso
+                            Internacionai de Buenas
+                            Pråcticas en Bienestaé Docente</div>
+                    </div>
+                    <a href="" class="font-medium text-blue-600 px-5 hover:underline text-lg block py-2">Estudiantes de
+                        Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700 px-5"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                    <a href=" " class="p-5 text-sm block text-blue-600 hover:underline">Read More &#62;</a>
+                </div>
+
+                <div class="w-full border overflow-hidden rounded-t-lg">
+                    <div class="relative group">
+                        <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                        <div
+                            class="bg-[#fec96bcc] scale-0 text-white transition-all duration-500 font-semibold group-hover:scale-100 w-full h-full text-center group-hover:p-5 rounded-lg flex items-center justify-center overflow-hidden absolute top-0 left-0">
+                            MINEDUC y
+                            'p gesarrollan 'eI JI Congreso
+                            Internacionai de Buenas
+                            Pråcticas en Bienestaé Docente</div>
+                    </div>
+                    <a href="" class="font-medium text-blue-600 px-5 hover:underline text-lg block py-2">Estudiantes de
+                        Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700 px-5"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                    <a href=" " class="p-5 text-sm block text-blue-600 hover:underline">Read More &#62;</a>
+                </div>
+
+                <div class="w-full border overflow-hidden rounded-t-lg">
+                    <div class="relative group">
+                        <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                        <div
+                            class="bg-[#fec96bcc] scale-0 text-white transition-all duration-500 font-semibold group-hover:scale-100 w-full h-full text-center group-hover:p-5 rounded-lg flex items-center justify-center overflow-hidden absolute top-0 left-0">
+                            MINEDUC y
+                            'p gesarrollan 'eI JI Congreso
+                            Internacionai de Buenas
+                            Pråcticas en Bienestaé Docente</div>
+                    </div>
+                    <a href="" class="font-medium text-blue-600 px-5 hover:underline text-lg block py-2">Estudiantes de
+                        Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700 px-5"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                    <a href=" " class="p-5 text-sm block text-blue-600 hover:underline">Read More &#62;</a>
+                </div>
+
+                <div class="w-full border overflow-hidden rounded-t-lg">
+                    <div class="relative group">
+                        <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                        <div
+                            class="bg-[#fec96bcc] scale-0 text-white transition-all duration-500 font-semibold group-hover:scale-100 w-full h-full text-center group-hover:p-5 rounded-lg flex items-center justify-center overflow-hidden absolute top-0 left-0">
+                            MINEDUC y
+                            'p gesarrollan 'eI JI Congreso
+                            Internacionai de Buenas
+                            Pråcticas en Bienestaé Docente</div>
+                    </div>
+                    <a href="" class="font-medium text-blue-600 px-5 hover:underline text-lg block py-2">Estudiantes de
+                        Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700 px-5"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                    <a href=" " class="p-5 text-sm block text-blue-600 hover:underline">Read More &#62;</a>
+                </div>
+
+                <div class="w-full border overflow-hidden rounded-t-lg">
+                    <div class="relative group">
+                        <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                        <div
+                            class="bg-[#fec96bcc] scale-0 text-white transition-all duration-500 font-semibold group-hover:scale-100 w-full h-full text-center group-hover:p-5 rounded-lg flex items-center justify-center overflow-hidden absolute top-0 left-0">
+                            MINEDUC y
+                            'p gesarrollan 'eI JI Congreso
+                            Internacionai de Buenas
+                            Pråcticas en Bienestaé Docente</div>
+                    </div>
+                    <a href="" class="font-medium text-blue-600 px-5 hover:underline text-lg block py-2">Estudiantes de
+                        Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700 px-5"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                    <a href=" " class="p-5 text-sm block text-blue-600 hover:underline">Read More &#62;</a>
+                </div>
+
+                <div class="w-full border overflow-hidden rounded-t-lg">
+                    <div class="relative group">
+                        <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                        <div
+                            class="bg-[#fec96bcc] scale-0 text-white transition-all duration-500 font-semibold group-hover:scale-100 w-full h-full text-center group-hover:p-5 rounded-lg flex items-center justify-center overflow-hidden absolute top-0 left-0">
+                            MINEDUC y
+                            'p gesarrollan 'eI JI Congreso
+                            Internacionai de Buenas
+                            Pråcticas en Bienestaé Docente</div>
+                    </div>
+                    <a href="" class="font-medium text-blue-600 px-5 hover:underline text-lg block py-2">Estudiantes de
+                        Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700 px-5"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                    <a href=" " class="p-5 text-sm block text-blue-600 hover:underline">Read More &#62;</a>
+                </div>
+
+            </div>
+
+            <a href="" class="block max-w-6xl md:mt-10 mt-5 mx-auto w-full">
+                <button
+                    class="px-8 w-full py-3.5 rounded-md transition-all duration-500 bg-[#ff798a] text-white hover:bg-[#ed455c]">LOAD
+                    MORE POSTS</button>
+            </a>
+
+        </div>
+    </div>
+
+
+
+    <div class="bg-[#393939] text-white flex flex-col items-center justify-center text-center p-5 py-14">
+        <a href="#" class="transition-all duration-500 hover:text-[#fec96b] font-semibold">Centro de Documentación</a>
+        <p class="mt-10 ">Sitios de interés:</p>
+        <div class="flex flex-wrap text-center justify-center items-center text-zinc-300 mt-5 gap-2 ">
+            <a href="https://educacionpublica.gob.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Dirección de Educación Pública</a> | <a
+                href="https://www.mineduc.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Ministerio de
+                Educación</a> | <a href="https://www.sistemadeadmisionescolar.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Sistema de Admisión Escolar</a> | <a
+                href="https://www.agenciaeducacion.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Agencia
+                de Calidad de la Educación</a>
+            | <a href="https://www.junaeb.cl/" class="transition-all duration-500 hover:text-[#fec96b]"> Junaeb</a>
+        </div>
+        <div class="flex items-center justify-center gap-5 mt-10">
+            <i title="Facebook" class="fa-brands cursor-pointer fa-facebook-f text-2xl text-zinc-300"></i>
+            <i title="Twitter" class="fa-brands cursor-pointer fa-twitter text-2xl text-zinc-300"></i>
+        </div>
+    </div>
+
+    <div id="scrollToTop" class="hidden fastFadeIn">
+        <div
+            class="w-14 h-9 border border-b-0 cursor-pointer flex items-center fixed bottom-0 right-10 bg-zinc-700 text-white justify-center rounded-t-lg">
+            <i class="fa-solid fa-chevron-up pt-1.5"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+</body>
+
+</html>
