@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: url(./Docs/Assets/girl.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky w-full text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="#" class="navUnderLine"> Inicio</a></li>
+                        <li class="relative group"><a href="#" class="navUnderLine flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href=""
+                                    class=" text-nowrap border bg-white text-black text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="#" class="navUnderLine"> Establecimiento Educacionales</a></li>
+                        <li><a href="#" class="navUnderLine"> Noticias</a></li>
+                        <li><a href="#" class="navUnderLine"> Participaci6n</a></li>
+                        <li><a href="#" class="navUnderLine"> Servicio de Bienestar</a></li>
+                        <li><a href="#" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="#" class="text-nowrap bg-[#ff798a] block p-5"> Inicio</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Centro de Documentaci6n</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Establecimiento Educacionales</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Participaci6n</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Servicio de Bienestar</a></li>
+                    <li><a href="#" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl "><span
+                    class="block p-2 md:w-[29rem] mx-auto md:mb-4 mb-2 bg-[#3abff0] rounded-md"> CONSTRUYENDO</span>
+                EDUCACIÓN PÚBLICA</h1>
+            <p class="md:text-2xl text-lg md:mt-6 mt-4 font-medium px-2">Comprometidos con la Educación Pública de
+                calidad en todo el país</p>
+        </div>
+    </div>
+
+    <div class="flex p-5 md:gap-20 gap-10 md:max-w-[90%] md:pt-16 pt-10 w-full md:flex-row flex-col md:mx-auto">
+        <div class="md:max-w-[78%] w-full">
+            <h2 class="md:text-4xl text-2xl mb-2 font-bold ">El Sistema de Educación Pública</h2>
+            <div class="md:w-48 w-40 rounded-full h-1 mb-6 bg-[#ff3c4c]"></div>
+            <p>
+                En noviembre del 2017, la Ley 21.040 crea una nueva institucionalidad para la Educación Pública en
+                Chile, donde se traspasan los establecimientos educacionales, jardines infantiles VTF, escuelas y liceos
+                de 345 municipios a 70 Servicios Locales de Educación Pública.
+                <br><br>
+                Los Servicios Locales de Educación Pública serán los sostenedores educacionales que velarán por entregar
+                una educación integral, de calidad y con pertinencia local, centrado en los aprendizajes para el siglo
+                XXI, que entregue oportunidades a todos los niños, niñas y jóvenes en el país para desarrollarse.
+            </p>
+            <a href="" class="block mt-6">
+                <button
+                    class="px-8 py-3.5 rounded-md transition-all duration-500 bg-[#ff798a] text-white hover:bg-black">EN
+                    QUÉ CONSISTE</button>
+            </a>
+
+
+            <h2 class="md:text-4xl text-2xl mb-2 font-bold mt-20">Documentos de interés</h2>
+            <div class="md:w-48 w-40 rounded-full h-1 mb-10 bg-[#ff3c4c]"></div>
+
+            <div class="grid md:grid-cols-3 grid-cols-2 gap-3">
+                <a href="" class="block p-1 rounded-lg bg-zinc-100">
+                    <div class=" overflow-hidden rounded-lg">
+                        <img src="./Docs/Assets/ad9.png"
+                            class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                    </div>
+                </a>
+                <a href="" class="block p-1 rounded-lg bg-zinc-100">
+                    <div class=" overflow-hidden rounded-lg">
+                        <img src="./Docs/Assets/ad10.png"
+                            class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                    </div>
+                </a>
+                <a href="" class="block p-1 rounded-lg bg-zinc-100">
+                    <div class=" overflow-hidden rounded-lg">
+                        <img src="./Docs/Assets/ad11.png"
+                            class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                    </div>
+                </a>
+                <a href="" class="block p-1 rounded-lg bg-zinc-100">
+                    <div class=" overflow-hidden rounded-lg">
+                        <img src="./Docs/Assets/ad12.jpg"
+                            class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+        <div class="md:max-w-[22%] w-full flex flex-col gap-3">
+
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad1.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad2.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad3.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad4.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad5.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad6.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad7.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+            <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                <div class=" overflow-hidden rounded-lg">
+                    <img src="./Docs/Assets/ad8.png"
+                        class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="mt-7 md:py-10 py-6 bg-zinc-100">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <h2 class="text-center font-bold md:text-4xl text-3xl">Últimas noticias</h2>
+
+            <div class="grid max-w-6xl mx-auto w-full md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-12 gap-5">
+
+                <div class="w-full">
+                    <img src="./Docs/Assets/img1.jpg" class="w-full mb-2 rounded-md" alt="">
+                    <a href="" class="font-medium hover:underline text-lg block py-2">Estudiantes de Visviri visitan
+                        por primera vez la ciudad de
+                        Arica</a>
+                    <p class="text-sm text-zinc-700"><span class="block pb-2">Diciembre 4, 2024</span>
+                        Como parte de generar identidad regional, los estudiantes de la Escuela Internado de Visviri
+                        estuvieron durante 3 días en la ciudad de Arica para conocer diversos lugares propios del
+                        territorio. La salida pedagógica de los</p>
+                </div>
+                <div class="w-full">
+                    <img src="./Docs/Assets/img2.jpg" class="w-full mb-2 rounded-md" alt="">
+                    <a href="" class="font-medium hover:underline text-lg block py-2">1.600 estudiantes desfilan
+                        por el séptimo aniversario de
+                        la Nueva Educaci6n Püblica</a>
+                    <p class="text-sm text-zinc-700"><span class="block pb-2">Noviembre 29, 2024</span>
+                        A los pies del Morro de Arica, estudiantes de la
+                        Regiön de Arica y Parinacota, rindieron homenaje al
+                        Nuevo Sistema de Educaci6n Püblica que este ario
+                        2024 cumple 7 arios desde la promulgaciön de la</p>
+                </div>
+                <div class="w-full">
+                    <img src="./Docs/Assets/img3.jpg" class="w-full mb-2 rounded-md" alt="">
+                    <a href="" class="font-medium hover:underline text-lg block py-2">MINEDUC y OEI Chile
+                        desarrollan el II Congreso
+                        Internacional de Buenas
+                        Pråcticas en Bienestar
+                        Docente</a>
+                    <p class="text-sm text-zinc-700"><span class="block pb-2">Noviembre 28, 2024</span>
+                        En dos jornadas, y con la participación de 110 académicos de diversos países y más de 300
+                        profesionales de diversas regiones del país, el encuentro permitirá pensar, debatir y
+                        reflexionar sobre aquellos factores que aportan a</p>
+                </div>
+
+            </div>
+
+            <div class="flex items-center justify-center mt-4">
+                <a href="" class="block mt-6">
+                    <button
+                        class="px-8 py-3.5 rounded-md transition-all duration-500 bg-[#ff798a] text-white hover:bg-black">LEER
+                        MAS</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="md:pt-14 md:pb-10 py-6"
+        style="background: url(./Docs/Assets/man.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="max-w-7xl w-full mx-auto p-5 text-white">
+            <h2 class="text-center font-bold md:text-4xl text-2xl max-w-4xl mx-auto !leading-tight">¿QUÉ ES UN SERVICIO
+                LOCAL DE EDUCACIÓN PÚBLICA?</h2>
+            <div class="md:w-48 w-40 rounded-full h-1 mb-6 mt-3 bg-[#ff3c4c] mx-auto"></div>
+
+            <p class="max-w-4xl mx-auto text-center">Es un órgano estatal, especializado, descentralizado y con
+                identidad territorial, que tiene como foco
+                principal el fortalecimiento de la Educación Pública.
+                <br><br>
+                Su objetivo es proveer a través de los establecimientos educacionales de su dependencia, el servicio
+                educacional, velando por la calidad, la mejora continua, la equidad y el desarrollo de los aprendizajes
+                de los niños, niñas y jóvenes en Chile, atendiendo a las características de los estudiantes y las
+                particularidades del territorio en que se emplaza.
+            </p>
+
+            <div class="flex items-center justify-center mt-4">
+                <a href="" class="block mt-6">
+                    <button
+                        class="px-8 py-3.5 rounded-md transition-all duration-500 border-2 border-white hover:border-[#ff798a] hover:text-[#ff798a] text-white ">CONÖCENOS</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="md:mt-7 mt-2 py-6 ">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <h2 class="text-center font-bold md:text-3xl text-2xl">CLAVES DEL NUEVO SISTEMA DE EDUCACIÓN PÚBLICA
+            </h2>
+            <div class="md:w-48 w-40 rounded-full h-1 mb-0 mt-5 bg-[#ff3c4c] mx-auto"></div>
+
+            <div class="grid max-w-5xl mx-auto w-full md:grid-cols-3 text-center sm:grid-cols-2 grid-cols-1 md:mt-12 mt-0 md:gap-10 gap-5">
+
+                <div class="w-full">
+                    <img src="./Docs/Assets/img4.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                    <a href="" class="font-medium hover:underline text-lg block py-2">Calidad en la Educaciön Püblica</a>
+                    <p class="text-sm text-zinc-700">Que sea confiable y eficiente para las familias de nuestro país. Una educación que pueda garantizar el desarrollo integral y bienestar de los y las estudiantes.</p>
+                </div>
+                <div class="w-full">
+                    <img src="./Docs/Assets/img5.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                    <a href="" class="font-medium hover:underline text-lg block py-2">Fortalecimiento de las
+                        comunidades educativas</a>
+                    <p class="text-sm text-zinc-700">Más atribuciones, participación y recursos para desarrollar proyectos con pertinencia local que mejoren la calidad y den oportunidades a los estudiantes.                    </p>
+                </div>
+                <div class="w-full">
+                    <img src="./Docs/Assets/img6.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                    <a href="" class="font-medium hover:underline text-lg block py-2">Nueva Institucionalidad</a>
+                    <p class="text-sm text-zinc-700">Liderada por una Dirección de Educación Pública, y administrada por los Servicios Locales que existen, y los que se están creando gradualmente en nuestro territorio nacional.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-md md:my-10 my-6 flex items-center gap-4 w-full mx-auto">
+
+        <a href=""><img src="./Docs/Assets/img7.png" class="w-full" alt=""></a>
+        <a href=""><img src="./Docs/Assets/img8.png" class="w-full" alt=""></a>
+        
+    </div>
+ 
+    <div class="bg-[#393939] text-white flex items-center justify-center text-center p-5 py-10">
+        <a href="">Centro de Documentación</a>
+        <p>Sitios de interés:</p>
+
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+</body>
+
+</html>
