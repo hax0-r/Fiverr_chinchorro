@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: url(./Docs/Assets/pincils.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky w-full z-40 text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="./index.html" class="navUnderLine "> Inicio</a></li>
+                        <li class="relative group"><a href="./servicio-local.html"
+                                class="navUnderLine  flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href="./centro-de-documentacion.html"
+                                    class=" text-nowrap border text-[#000]  bg-white  text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="./establecimientos-educacionales.html" class="navUnderLine "> Establecimiento
+                                Educacionales</a></li>
+                        <li><a href="./noticias.html" class="navUnderLine"> Noticias</a></li>
+                        <li><a href="./participacion-ciudadana.html" class="navUnderLine ">
+                                Participaci6n</a></li>
+                        <li><a href="./bienestar.html" class="navUnderLine text-[#ff798a]"> Servicio de Bienestar</a>
+                        </li>
+                        <li><a href="https://intranet.slepch.cl/sl/" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="./index.html" class="text-nowrap block p-5"> Inicio</a></li>
+                    <li><a href="./servicio-local.html" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="./centro-de-documentacion.html" class="text-nowrap  block p-5 "> Centro de
+                            Documentaci6n</a></li>
+                    <li><a href="./establecimientos-educacionales.html" class="text-nowrap  block p-5"> Establecimiento
+                            Educacionales</a></li>
+                    <li><a href="./noticias.html" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="./participacion-ciudadana.html" class="text-nowrap  block p-5">
+                            Participaci6n</a></li>
+                    <li><a href="./bienestar.html" class="text-nowrap  block p-5 bg-[#ff798a] "> Servicio de
+                            Bienestar</a></li>
+                    <li><a href="https://intranet.slepch.cl/sl/" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl ">Servicio de Bienestar</h1>
+            <p class="md:text-2xl text-lg md:mt-6 mt-4 font-medium px-2">del Servicio Local de Educación Pública
+                Chinchorro </p>
+        </div>
+    </div>
+
+    <div class="max-w-5xl w-full mx-auto p-5 md:pt-16 pt-8">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./Docs/Assets/slide1.png" alt=""></div>
+                <div class="swiper-slide"><img src="./Docs/Assets/slide2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./Docs/Assets/slide3.jpg" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <div class="max-w-5xl w-full mx-auto p-5 md:pt-16 pt-8">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./Docs/Assets/slide4.png" alt=""></div>
+                <div class="swiper-slide"><img src="./Docs/Assets/slide5.png" alt=""></div>
+                <div class="swiper-slide"><img src="./Docs/Assets/slide6.png" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto md:pt-16 pt-8 p-5">
+
+        <h2 class="md:text-3xl text-2xl font-bold text-center">ACERCA DEL SERVICIO DE BIENESTAR</h2>
+        <div class=" grid md:grid-cols-2 text-zinc-600 gap-8 mx-auto mt-8">
+            <div class="w-full">
+                <p>El Servicio de Bienestar funciona como Unidad adscrita a la Subdirección de Gestión de Personas del
+                    Servicio Local de Educación Pública de Chinchorro, y su funcionamiento nace enmarcado bajo los
+                    principios de:</p>
+                <ul class="pl-5 py-7 list-disc space-y-1">
+                    <li> Respeto</li>
+                    <li> Equidad</li>
+                    <li> Solidaridad</li>
+                    <li> Universalidad de las prestaciones</li>
+                    <li> Participación</li>
+                    <li> Orientación Proactiva</li>
+                    <li> Territorialidad</li>
+                </ul>
+                <p>El Servicio de Bienestar del SLEP Chinchorro, al ser un Bienestar del Sector Público, su objetivo es
+                    el contribuir al bienestar de los y las funcionarios(as) cooperando a su adaptación al medio, y a la
+                    elevación de sus condiciones de vida.</p>
+            </div>
+            <div class="w-full">
+                <h2 class="font-medium text-lg">Requisitos de Afiliación</h2>
+                <ul class="pl-5 py-7 list-disc space-y-1">
+                    <li> Asistentes de la Educación (P-02).</li>
+                    <li> Funcionarios de la Administración del Servicio Local de Educación Pública de Chinchorro(P-01).
+                    </li>
+                </ul>
+                <p>Pueden serlo, tanto funcionarios de planta o a contrata y aquellos que hayan jubilado siendo
+                    funcionarios del Servicio Local de Educación Pública de Chinchorro.</p>
+                <h2 class="font-medium mt-6 text-lg">Entidad Administradora:</h2>
+                <ul class="pl-5 py-7 list-disc space-y-1">
+                    <li> Descarga el formulario de inscripción aquí.</li>
+                    <li> Descarga la publicación en el Diario Oficial aquí. </li>
+                </ul>
+                <p>El Servicio de Bienestar es administrado por el respectivo Consejo Administrativo.</p>
+            </div>
+        </div>
+        <h2 class="md:text-3xl md:mt-16 mt-8 text-2xl font-bold text-center">¡Inscríbete!</h2>
+        <p class="text-center text-zinc-500 mt-5">Puedes inscribirte con el Área de Personal de nuestro servicio,
+            enviando un correo a: bienestar@epchinchorro.cl </p>
+
+
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto md:pt-16 pt-8 p-5">
+        <h2 class="md:text-3xl text-xl font-bold text-center">PROTOCOLOS, PROCEDIMIENTOS Y MANUALES</h2>
+
+        <div class="flex md:gap-10 gap-5 md:flex-row flex-col md:mt-14 mt-8">
+            <div class="md:max-w-[75%] w-full">
+                <main class="">
+                    <div class="flex justify-center items-start my-2">
+                        <div class="w-full my-1">
+                            <h2 class="font-semibold text-lg mb-4">BENEFICIOS </h2>
+                            <ul class="flex flex-col">
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(1)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">CONVENIO IMARED - SLEP CHINCHORRO</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(2)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">CONVENIO DERMOESTÉTICA Y SALUD INTEGRAL VITENUM - SLEP CHINCHORRO</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(3)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">CONVENIO CENTRO DE SALUD K-SPORT - SLEP CHINCHORRO</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(4)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">CONVENIO HOTEL ANTAY & SPA - SLEP CHINCHORRO</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>Manual de prevencién de Delitos funcionarios Lavado de Activos y
+                                                Financiamiento al Terrorismo</li>
+                                            <li>Denuncia con Reserva de Identidad ROS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(5)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">CONVENIO OPTICA 7 VISION - SLEP CHINCHORRO</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+
+
+                <main class="md:mt-12 mt-8">
+                    <div class="flex justify-center items-start my-2">
+                        <div class="w-full my-1">
+                            <h2 class="font-semibold text-lg mb-4">AFILIARSE </h2>
+                            <ul class="flex flex-col">
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(6)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">FORMULARIO DE SOLICITUD DE AFILIACIÖN 2023</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(7)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">DECRETO NRO. 280 APRUEBA SERVICIO DE BIENESTAR</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(8)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">DiPTICO BIENESTAR</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+                <main class="md:mt-12 mt-8">
+                    <div class="flex justify-center items-start my-2">
+                        <div class="w-full my-1">
+                            <h2 class="font-semibold text-lg mb-4">ACCESO Y COBERTURA SALA CUNA</h2>
+                            <ul class="flex flex-col">
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(9)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">FORMULARIO DE ACCESO A SALA CUNA</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(10)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">FORMULARIO DE BONO COMPENSATORIO SALA CUNA</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(11)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">REX NRO. 2473 PROCEDIMIENTO DE ACCESO Y COBERTURA A SALA CUNA</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-b-2 py-2 text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                    x-data="accordion(12)">
+                                    <h2 @click="handleClick()"
+                                        class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                        <span class="">DiPTICO ACCESO A SALA CUNA</span>
+                                        <i :class="handleRotate()"
+                                            class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                    </h2>
+                                    <div x-ref="tab" :style="handleToggle()"
+                                        class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                        <ul class="pl-10 p-3 flex text-sm flex-col gap-3 text-zinc-800 list-disc">
+                                            <li>PROCEDIEMIENTO DE VERIFICACIÖN Y DESCUENTO DE PENSION DE ALIMENTOS</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div class="md:max-w-[25%] w-full flex flex-col gap-3">
+
+                <a href="" class="block p-2 rounded-lg">
+                    <div class=" overflow-hidden rounded-lg">
+                        <img src="./Docs/Assets/img9.jpeg"
+                            class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                    </div>
+                </a>
+                <a href="" class="block p-2 rounded-lg bg-zinc-100">
+                    <div class=" overflow-hidden rounded-lg">
+                        <img src="./Docs/Assets/img10.png"
+                            class="w-full rounded-lg duration-500 transition-all hover:scale-105" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-[#393939] text-white flex flex-col items-center justify-center text-center p-5 py-14">
+        <a href="#" class="transition-all duration-500 hover:text-[#fec96b] font-semibold">Centro de Documentación</a>
+        <p class="mt-10 ">Sitios de interés:</p>
+        <div class="flex flex-wrap text-center justify-center items-center text-zinc-300 mt-5 gap-2 ">
+            <a href="https://educacionpublica.gob.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Dirección de Educación Pública</a> | <a
+                href="https://www.mineduc.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Ministerio de
+                Educación</a> | <a href="https://www.sistemadeadmisionescolar.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Sistema de Admisión Escolar</a> | <a
+                href="https://www.agenciaeducacion.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Agencia
+                de Calidad de la Educación</a>
+            | <a href="https://www.junaeb.cl/" class="transition-all duration-500 hover:text-[#fec96b]"> Junaeb</a>
+        </div>
+        <div class="flex items-center justify-center gap-5 mt-10">
+            <i title="Facebook" class="fa-brands cursor-pointer fa-facebook-f text-2xl text-zinc-300"></i>
+            <i title="Twitter" class="fa-brands cursor-pointer fa-twitter text-2xl text-zinc-300"></i>
+        </div>
+    </div>
+
+    <div id="scrollToTop" class="hidden fastFadeIn">
+        <div
+            class="w-14 h-9 border border-b-0 cursor-pointer flex items-center fixed bottom-0 right-10 bg-zinc-700 text-white justify-center rounded-t-lg">
+            <i class="fa-solid fa-chevron-up pt-1.5"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+<script>
+
+    var swiper = new Swiper(".mySwiper", {
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        }
+    });
+</script>
+
+</html>

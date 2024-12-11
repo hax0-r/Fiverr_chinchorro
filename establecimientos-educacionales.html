@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: url(./Docs/Assets/pincils.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky w-full text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="./index.html" class="navUnderLine "> Inicio</a></li>
+                        <li class="relative group"><a href="./servicio-local.html"
+                                class="navUnderLine  flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href="./centro-de-documentacion.html"
+                                    class=" text-nowrap border text-black bg-white  text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="./establecimientos-educacionales.html" class="navUnderLine text-[#ff798a]"> Establecimiento
+                                Educacionales</a></li>
+                        <li><a href="./noticias.html" class="navUnderLine"> Noticias</a></li>
+                        <li><a href="./participacion-ciudadana.html" class="navUnderLine"> Participaci6n</a></li>
+                        <li><a href="./bienestar.html" class="navUnderLine"> Servicio de Bienestar</a></li>
+                        <li><a href="https://intranet.slepch.cl/sl/" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="./index.html" class="text-nowrap block p-5"> Inicio</a></li>
+                    <li><a href="./servicio-local.html" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="./centro-de-documentacion.html" class="text-nowrap  block p-5 "> Centro de
+                            Documentaci6n</a></li>
+                    <li><a href="./establecimientos-educacionales.html" class="text-nowrap bg-[#ff798a]  block p-5"> Establecimiento
+                            Educacionales</a></li>
+                    <li><a href="./noticias.html" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="./participacion-ciudadana.html" class="text-nowrap  block p-5"> Participaci6n</a></li>
+                    <li><a href="./bienestar.html" class="text-nowrap  block p-5"> Servicio de Bienestar</a></li>
+                    <li><a href="https://intranet.slepch.cl/sl/" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl "><span
+                    class="block p-2 md:w-[34rem] mx-auto md:mb-4 mb-2 bg-[#3abff0] rounded-md"> ESTABLECIMIENTOS</span>
+                EDUCACIONALES</h1>
+            <p class="md:text-2xl text-lg md:mt-6 mt-4 font-medium px-2">Te invitamos a conocer los establecimientos de
+                nuestro Servicio Local de Chinchorro</p>
+        </div>
+    </div>
+
+
+    <p class="max-w-7xl w-full mx-auto p-5 md:pt-16 pt-8">EL Servicio Local de Chinchorro comprende 64 establecimientos
+        educacionales públicos incluyendo escuelas y liceos urbanos y rurales, dos establecimientos de Educación
+        Especial, siete liceos Técnico Profesionales y 11 Jardines Infantiles VTF. </p>
+
+
+    <div class="md:mt-2 md:py-6 ">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <div
+                class="grid max-w-5xl mx-auto w-full md:grid-cols-3 text-center sm:grid-cols-2 grid-cols-1 md:gap-10 gap-3">
+                <div class="w-full">
+                    <img src="./Docs/Assets/icon1.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(1)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Escuela República Argentina (E-1) | Arica</li>
+                                               <li> Escuela General José Miguel Carrera (D-10)</li>
+                                               <li> Escuela Ricardo Silva Arriagada (E-15) | Arica</li>
+                                               <li> Escuela Manuel Rodríguez Erdoyza (D-11) | Arica</li>
+                                               <li> Escuela Humberto Valenzuela García (D-18)</li>
+                                               <li> Escuela República de Israel (D-4) | Arica</li>
+                                               <li> Escuela General Pedro Lagos Marchant (D-7) |</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(2)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas Rurales</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                                <li> Escuela República Argentina (E-1) | Arica</li>
+                                                <li> Escuela General José Miguel Carrera (D-10)</li>
+                                                <li> Escuela Ricardo Silva Arriagada (E-15) | Arica</li>
+                                                <li> Escuela Manuel Rodríguez Erdoyza (D-11) | Arica</li>
+                                                <li> Escuela Humberto Valenzuela García (D-18)</li>
+                                                <li> Escuela República de Israel (D-4) | Arica</li>
+                                                <li> Escuela General Pedro Lagos Marchant (D-7) |</li>
+                                             </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(3)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas de Educaci6n Especial</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Centro de Capacitación Reino de Bélgica | Arica</li>
+                                               <li> Escuela Doctor Ricardo Olea Guerra | Arica</li>
+                                             </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(4)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas en Encierro</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                                <li> Escuela Pedro Gutiérrez Torres (E-93) | Arica</li>
+                                              </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <div class="w-full">
+                    <img src="./Docs/Assets/icon2.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(5)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Liceos</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Liceo Octavio  Palma Pérez (A-1) | Arica</li>
+                                               <li> Colegio Integrado Eduardo Frei Montalva | Arica</li>
+                                               <li> Liceo Artístico Doctor Juan Noé Crevani | Arica</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(6)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Liceos Técnico Profesional</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                              <li>  Liceo Politécnico (A-2) | Arica</li>
+                                              <li>  Liceo Antonio Varas de la Barra (B-4) | Arica</li>
+                                              <li>  Instituto Comercial de Arica | Arica</li>
+                                              <li>  Liceo Agrícola José Abelardo Núñez | Arica</li>
+                                             </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(7)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Liceos Bicentenario</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Liceo Bicentenario Jovina Naranjo Fernández (A-5) | Arica</li>
+                                               <li> Liceo Bicentenario Pablo Neruda | Arica</li>
+                                             </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <div class="w-full">
+                    <img src="./Docs/Assets/icon3.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(8)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Jardines VT F</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Jardín Infantil Suma Panqaritas | Arica</li>
+                                               <li> Jardín Infantil Inti Jalsu | Arica</li>
+                                               <li> Jardín Infantil Sueños de Angelitos | Arica</li>
+                                               <li> Jardín Infantil Estrellitas del Saber | Arica</li>
+                                               <li> Jardín Infantil Uruchi Amaya | Arica</li>
+                                               <li> Jardín Infantil Payachatas | Arica</li>
+                                               <li> Jardín Infantil Mis Primeros Pasos | Arica</li>
+                                               <li> Jardín Infantil Mi Rinconcito Feliz | Arica</li>
+                                               <li> Jardín Infantil Caritas de Sol | Arica</li>
+                                               <li> Jardín Infantil Arcoiris | Arica</li>
+                                               <li> Jardín Infantil Mazorquita | Arica</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="md:mt-2 py-6 bg-zinc-100 ">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <h2 class="font-semibold md:text-4xl  mx-auto mb-3 text-2xl">Planes de Funcionamiento 2021:</h2>
+            <p class="text-zinc-600 mb-16 mx-auto">Encuentra el plan de funcionamiento de tu establecimiento entrando a tu comuna</p>
+            <div
+                class="grid  mx-auto w-full lg:grid-cols-4 md:grid-cols-3 text-center sm:grid-cols-2 grid-cols-1 md:gap-10 gap-7">
+
+                <div class="w-full">
+                    <h2 class="font-semibold text-2xl md:text-3xl text-left mb-5">Arica</h2>
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(9)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas Rurales</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Escuela República Argentina (E-1) | Arica</li>
+                                               <li> Escuela General José Miguel Carrera (D-10)</li>
+                                               <li> Escuela Ricardo Silva Arriagada (E-15) | Arica</li>
+                                               <li> Escuela Manuel Rodríguez Erdoyza (D-11) | Arica</li>
+                                               <li> Escuela Humberto Valenzuela García (D-18)</li>
+                                               <li> Escuela República de Israel (D-4) | Arica</li>
+                                               <li> Escuela General Pedro Lagos Marchant (D-7) |</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(10)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas Urbanas</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                                <li> Escuela República Argentina (E-1) | Arica</li>
+                                                <li> Escuela General José Miguel Carrera (D-10)</li>
+                                                <li> Escuela Ricardo Silva Arriagada (E-15) | Arica</li>
+                                                <li> Escuela Manuel Rodríguez Erdoyza (D-11) | Arica</li>
+                                                <li> Escuela Humberto Valenzuela García (D-18)</li>
+                                                <li> Escuela República de Israel (D-4) | Arica</li>
+                                                <li> Escuela General Pedro Lagos Marchant (D-7) |</li>
+                                             </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(11)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas Urbanas - Carcelarias</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Centro de Capacitación Reino de Bélgica | Arica</li>
+                                               <li> Escuela Doctor Ricardo Olea Guerra | Arica</li>
+                                             </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(12)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Escuelas Urbanas - Especiales</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                                <li> Escuela Pedro Gutiérrez Torres (E-93) | Arica</li>
+                                              </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <h2 class="font-semibold text-2xl md:text-3xl text-left mb-5">Camarones</h2>
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(13)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Establecimientos</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                                <li> Escuela Valle de Chitita</li>
+                                                <li> Escuela Cobija</li>
+                                                <li> Escuela Cuya</li>
+                                                <li> Escuela Valle de Esquifia</li>
+                                                <li> Escuela Guaäacagua</li>
+                                                <li> Escuela Illapata</li>
+                                                <li> Liceo Valle de Codpa</li>
+                                                <li> Escuela Parcohaylla</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <h2 class="font-semibold text-2xl md:text-3xl text-left mb-5">General Lagos</h2>
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(14)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Establecimientos</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Escuela República Argentina (E-1) | Arica</li>
+                                               <li> Escuela General José Miguel Carrera (D-10)</li>
+                                               <li> Escuela Ricardo Silva Arriagada (E-15) | Arica</li>
+                                               <li> Escuela Manuel Rodríguez Erdoyza (D-11) | Arica</li>
+                                               <li> Escuela Humberto Valenzuela García (D-18)</li>
+                                               <li> Escuela República de Israel (D-4) | Arica</li>
+                                               <li> Escuela General Pedro Lagos Marchant (D-7) |</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <h2 class="font-semibold text-2xl md:text-3xl text-left mb-5">Camarones</h2>
+                    <div class="w-full h-0.5 bg-[#ff798a] rounded-full"></div>
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-sm text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(15)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Establecimientos</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <ul class="pl-7 p-3 text-left flex text-xs flex-col gap-3 text-zinc-800 list-disc">
+                                               <li> Escuela Valle de Chitita</li>
+                                               <li> Escuela Cobija</li>
+                                               <li> Escuela Cuya</li>
+                                               <li> Escuela Valle de Esquifia</li>
+                                               <li> Escuela Guaäacagua</li>
+                                               <li> Escuela Illapata</li>
+                                               <li> Liceo Valle de Codpa</li>
+                                               <li> Escuela Parcohaylla</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bg-[#393939] text-white flex flex-col items-center justify-center text-center p-5 py-14">
+        <a href="#" class="transition-all duration-500 hover:text-[#fec96b] font-semibold">Centro de Documentación</a>
+        <p class="mt-10 ">Sitios de interés:</p>
+        <div class="flex flex-wrap text-center justify-center items-center text-zinc-300 mt-5 gap-2 ">
+            <a href="https://educacionpublica.gob.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Dirección de Educación Pública</a> | <a
+                href="https://www.mineduc.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Ministerio de
+                Educación</a> | <a href="https://www.sistemadeadmisionescolar.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Sistema de Admisión Escolar</a> | <a
+                href="https://www.agenciaeducacion.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Agencia
+                de Calidad de la Educación</a>
+            | <a href="https://www.junaeb.cl/" class="transition-all duration-500 hover:text-[#fec96b]"> Junaeb</a>
+        </div>
+        <div class="flex items-center justify-center gap-5 mt-10">
+            <i title="Facebook" class="fa-brands cursor-pointer fa-facebook-f text-2xl text-zinc-300"></i>
+            <i title="Twitter" class="fa-brands cursor-pointer fa-twitter text-2xl text-zinc-300"></i>
+        </div>
+    </div>
+
+    <div id="scrollToTop" class="hidden fastFadeIn">
+        <div
+            class="w-14 h-9 border border-b-0 cursor-pointer flex items-center fixed bottom-0 right-10 bg-zinc-700 text-white justify-center rounded-t-lg">
+            <i class="fa-solid fa-chevron-up pt-1.5"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+</body>
+
+</html>

@@ -48,7 +48,7 @@ closeNav.addEventListener('click', () => {
 
 scrollToTop.addEventListener('click', () => {
     window.scrollTo({
-        top:0
+        top: 0
     })
 })
 

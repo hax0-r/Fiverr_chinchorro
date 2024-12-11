@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchorro</title>
+    <!-- <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./Docs/Styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    <div class="w-full h-16 flex items-center justify-end md:px-20 p-5  gap-6 bg-[#ff3c4c]">
+        <i class="fa-brands cursor-pointer fa-facebook-f text-xl text-white"></i>
+        <i class="fa-brands cursor-pointer fa-twitter text-xl text-white"></i>
+    </div>
+
+    <div class="min-h-[90vh] w-full"
+        style="background: linear-gradient(rgba(0, 0, 0, 0.684),rgba(0, 0, 0, 0.662)),url(./Docs/Assets/students.jpg) center/cover no-repeat; background-attachment: fixed;">
+        <div class="sticky w-full text-white top-0 transition-all duration-500" id="navScroll">
+            <div class=" mx-auto flex items-center gap-10 justify-between max-w-[1300px] p-5 md:h-28 h-20">
+                <a href="./index.html">
+                    <img src="./Docs/Assets/logo.png" id="logoWhite" class="md:h-16 h-12" alt="">
+                    <img src="./Docs/Assets/logoBlack.png" id="logoBlack" class="md:h-16 h-12" alt=""
+                        style="display: none;">
+                </a>
+                <div id="showNavbar" class="">
+                    <ul class="xl:flex hidden items-center fadeIn font-medium gap-5">
+                        <li><a href="./index.html" class="navUnderLine "> Inicio</a></li>
+                        <li class="relative group"><a href="./servicio-local.html"
+                                class="navUnderLine  flex items-center gap-2 "> Servicio
+                                Local
+                                <i class="fa-solid fa-caret-down group-hover:rotate-180 transition-all "></i></a>
+                            <div class="absolute w-60 hidden group-hover:block fastFadeIn pt-7">
+                                <a href="./centro-de-documentacion.html"
+                                    class=" text-nowrap border text-[#000]  bg-white  text-center p-4 navUnderLine rounded-md">Centro
+                                    de Documentaci6n</a>
+                            </div>
+                        </li>
+                        <li><a href="./establecimientos-educacionales.html" class="navUnderLine "> Establecimiento
+                                Educacionales</a></li>
+                        <li><a href="./noticias.html" class="navUnderLine"> Noticias</a></li>
+                        <li><a href="./participacion-ciudadana.html" class="navUnderLine text-[#ff798a]">
+                                Participaci6n</a></li>
+                        <li><a href="./bienestar.html" class="navUnderLine"> Servicio de Bienestar</a></li>
+                        <li><a href="https://intranet.slepch.cl/sl/" class="navUnderLine"> Intranet</a></li>
+                        <li onclick="SearchMenu()"><i
+                                class="fa-solid fa-magnifying-glass cursor-pointer transition-all hover:rotate-12 py-5 px-1 hover:text-[#ff798a]"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full max-w-[70%] hidden" id="showSearch">
+                    <div class="flex items-center gap-4 fadeIn w-full">
+                        <div
+                            class="flex items-center gap-4 bg-white border border-zinc-400 w-full  text-black rounded-md p-5">
+                            <i class="fa-solid fa-magnifying-glass  cursor-pointer"></i>
+                            <input type="text" placeholder="Search..." class="w-full">
+                        </div>
+                        <i onclick="NavbarMenu()"
+                            class="fa-solid transition-all duration-500 fa-x p-3 hover:text-[#ff798a] cursor-pointer"></i>
+                    </div>
+                </div>
+
+
+                <i id="openNav" class="fa-solid fa-bars text-2xl cursor-pointer xl:hidden"></i>
+            </div>
+        </div>
+
+        <!-- responsive Navbar -->
+
+        <div id="resNav" style="width: 0;"
+            class="fixed transition-all duration-500 xl:hidden overflow-hidden top-0 left-0 w-full h-screen bg-white z-50">
+            <div class="">
+                <div class="flex p-5 items-center justify-between">
+                    <a href="./index.html">
+                        <img src="./Docs/Assets/logoBlack.png" class="h-12" alt="">
+                    </a>
+                    <i class="fa-solid fa-x text-xl pr-3" id="closeNav"></i>
+                </div>
+                <ul class="flex flex-col mt-5 fadeIn font-medium ">
+                    <li><a href="./index.html" class="text-nowrap block p-5"> Inicio</a></li>
+                    <li><a href="./servicio-local.html" class="text-nowrap  block p-5"> Servicio Local</a></li>
+                    <li><a href="./centro-de-documentacion.html" class="text-nowrap  block p-5 "> Centro de
+                            Documentaci6n</a></li>
+                    <li><a href="./establecimientos-educacionales.html" class="text-nowrap  block p-5"> Establecimiento
+                            Educacionales</a></li>
+                    <li><a href="./noticias.html" class="text-nowrap  block p-5"> Noticias</a></li>
+                    <li><a href="./participacion-ciudadana.html" class="text-nowrap bg-[#ff798a]  block p-5">
+                            Participaci6n</a></li>
+                    <li><a href="./bienestar.html" class="text-nowrap  block p-5"> Servicio de Bienestar</a></li>
+                    <li><a href="https://intranet.slepch.cl/sl/" class="text-nowrap  block p-5"> Intranet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex text-white  items-center min-h-[70vh] justify-center flex-col text-center p-3">
+            <h1 class="tracking-wider !leading-tight font-bold md:text-5xl text-3xl "><span
+                    class="block p-2 md:w-[28rem] mx-auto md:mb-4 mb-2 bg-[#3abff0] rounded-md"> PARTICIPACIÓN</span>
+                CIUDADANA</h1>
+        </div>
+    </div>
+
+
+    <div class="md:mt-2 py-6 bg-zinc-100 ">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <img src="./Docs/Assets/vote.png" class="max-w-[10rem] mb-6 w-full" alt="">
+            <h2 class="font-semibold md:text-4xl  mx-auto mb-3 text-2xl">Revisa los candidatos al Consejo Local de
+                Educación</h2>
+            <div class="w-40 md:w-60 mb-16 h-0.5 rounded-full  bg-[#ffc107]"></div>
+            <div class="grid  mx-auto w-full md:grid-cols-3 text-center sm:grid-cols-2 grid-cols-1 md:gap-10 gap-7">
+
+                <div class="w-full">
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-lg font-medium text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(1)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Estudiantes</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <div class="overflow-x-auto mb-3">
+                                                <table class="w-full border-collapse border border-gray-300 text-sm">
+                                                    <thead>
+                                                        <tr class="bg-gray-200 text-zinc-900 ">
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                NOMBRE</th>
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                ESTABLECIMIENTO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-xs text-zinc-600">
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Jeimy Bugueño
+                                                                Tapia</td>
+                                                            <td class="border border-gray-300 p-3">Liceo
+                                                                Politécnico Arica</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dayris Nhayara
+                                                                Rodríguez Godoy</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Octavio
+                                                                Palma Pérez</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Valentina
+                                                                Elizabeth Martínez Ferrada</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Bic.
+                                                                Jovina Naranjo Fernández</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Luis Villanueva
+                                                                Castillo</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Antonio
+                                                                Varas De La Barra</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dafne Atenea
+                                                                Flores Rojas</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Republica
+                                                                De Francia</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-b-0 border-gray-300 p-3">Sebastián
+                                                                Mardones Prado</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Manuel
+                                                                Rodríguez Erdoiza</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-lg font-medium text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(2)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Apoderados</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <div class="overflow-x-auto mb-3">
+                                                <table class="w-full border-collapse border border-gray-300 text-sm">
+                                                    <thead>
+                                                        <tr class="bg-gray-200 text-zinc-900 ">
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                NOMBRE</th>
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                ESTABLECIMIENTO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-xs text-zinc-600">
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Jeimy Bugueño
+                                                                Tapia</td>
+                                                            <td class="border border-gray-300 p-3">Liceo
+                                                                Politécnico Arica</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dayris Nhayara
+                                                                Rodríguez Godoy</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Octavio
+                                                                Palma Pérez</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Valentina
+                                                                Elizabeth Martínez Ferrada</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Bic.
+                                                                Jovina Naranjo Fernández</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Luis Villanueva
+                                                                Castillo</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Antonio
+                                                                Varas De La Barra</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dafne Atenea
+                                                                Flores Rojas</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Republica
+                                                                De Francia</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-b-0 border-gray-300 p-3">Sebastián
+                                                                Mardones Prado</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Manuel
+                                                                Rodríguez Erdoiza</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-lg font-medium text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(3)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Asistentes de la Educaci6n</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <div class="overflow-x-auto mb-3">
+                                                <table class="w-full border-collapse border border-gray-300 text-sm">
+                                                    <thead>
+                                                        <tr class="bg-gray-200 text-zinc-900 ">
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                NOMBRE</th>
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                ESTABLECIMIENTO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-xs text-zinc-600">
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Jeimy Bugueño
+                                                                Tapia</td>
+                                                            <td class="border border-gray-300 p-3">Liceo
+                                                                Politécnico Arica</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dayris Nhayara
+                                                                Rodríguez Godoy</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Octavio
+                                                                Palma Pérez</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Valentina
+                                                                Elizabeth Martínez Ferrada</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Bic.
+                                                                Jovina Naranjo Fernández</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Luis Villanueva
+                                                                Castillo</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Antonio
+                                                                Varas De La Barra</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dafne Atenea
+                                                                Flores Rojas</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Republica
+                                                                De Francia</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-b-0 border-gray-300 p-3">Sebastián
+                                                                Mardones Prado</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Manuel
+                                                                Rodríguez Erdoiza</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-lg font-medium text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(4)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Profesionales de Ia Educaci6n</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <div class="overflow-x-auto mb-3">
+                                                <table class="w-full border-collapse border border-gray-300 text-sm">
+                                                    <thead>
+                                                        <tr class="bg-gray-200 text-zinc-900 ">
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                NOMBRE</th>
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                ESTABLECIMIENTO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-xs text-zinc-600">
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Jeimy Bugueño
+                                                                Tapia</td>
+                                                            <td class="border border-gray-300 p-3">Liceo
+                                                                Politécnico Arica</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dayris Nhayara
+                                                                Rodríguez Godoy</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Octavio
+                                                                Palma Pérez</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Valentina
+                                                                Elizabeth Martínez Ferrada</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Bic.
+                                                                Jovina Naranjo Fernández</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Luis Villanueva
+                                                                Castillo</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Antonio
+                                                                Varas De La Barra</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dafne Atenea
+                                                                Flores Rojas</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Republica
+                                                                De Francia</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-b-0 border-gray-300 p-3">Sebastián
+                                                                Mardones Prado</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Manuel
+                                                                Rodríguez Erdoiza</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="w-full">
+                    <main class="bg-light-blue">
+                        <div class="flex justify-center items-start my-2">
+                            <div class="w-full my-1">
+                                <ul class="flex flex-col">
+                                    <li class="border-b-2 text-lg font-medium text-blue-500 hover:text-[#ff798a] duration-500 transition-all"
+                                        x-data="accordion(5)">
+                                        <h2 @click="handleClick()"
+                                            class="flex flex-row justify-between items-center font-semibold p-3 gap-2 cursor-pointer">
+                                            <span class="">Equipo Directivo</span>
+                                            <i :class="handleRotate()"
+                                                class="fa-solid transition-all duration-500 fa-angle-down text-[#ff798a]"></i>
+                                        </h2>
+                                        <div x-ref="tab" :style="handleToggle()"
+                                            class=" overflow-hidden max-h-0 duration-500 transition-all">
+                                            <div class="overflow-x-auto mb-3">
+                                                <table class="w-full border-collapse border border-gray-300 text-sm">
+                                                    <thead>
+                                                        <tr class="bg-gray-200 text-zinc-900 ">
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                NOMBRE</th>
+                                                            <th class="border border-gray-300 p-3 font-bold">
+                                                                ESTABLECIMIENTO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-xs text-zinc-600">
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Jeimy Bugueño
+                                                                Tapia</td>
+                                                            <td class="border border-gray-300 p-3">Liceo
+                                                                Politécnico Arica</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dayris Nhayara
+                                                                Rodríguez Godoy</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Octavio
+                                                                Palma Pérez</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Valentina
+                                                                Elizabeth Martínez Ferrada</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Bic.
+                                                                Jovina Naranjo Fernández</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Luis Villanueva
+                                                                Castillo</td>
+                                                            <td class="border border-gray-300 p-3">Liceo Antonio
+                                                                Varas De La Barra</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 p-3">Dafne Atenea
+                                                                Flores Rojas</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Republica
+                                                                De Francia</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-b-0 border-gray-300 p-3">Sebastián
+                                                                Mardones Prado</td>
+                                                            <td class="border border-gray-300 p-3">Esc. Manuel
+                                                                Rodríguez Erdoiza</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <p class="max-w-4xl text-center w-full mx-auto p-5 md:pt-16 pt-8">Cada Servicio Local tiene dos entidades que velan
+        por el perfeccionamiento de la Educación Pública, donde participan los integrantes de las comunidades
+        educativas. </p>
+    <div class="w-40 mx-auto md:w-60 md:mb-10 mb-5 h-0.5 rounded-full  bg-[#ffc107]"></div>
+
+    <div class="max-w-7xl w-full mx-auto p-5">
+        <div class="grid max-w-5xl mx-auto w-full md:grid-cols-2 text-center grid-cols-1 md:gap-10 gap-5">
+
+            <div class="w-full">
+                <img src="./Docs/Assets/icon4.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                <a href="" class="font-medium hover:underline textl3 block">Comité Directivo</a>
+                <p class="text-sm text-zinc-700">El comité directivo es el encargado de velar por el adecuado desarrollo
+                    del Servicio Local, por la rendición de cuentas de la directora o director ejecutivo ante la
+                    comunidad local y además se encarga de contribuir a la vinculación del Servicio Local con las
+                    instituciones de gobierno de las comunas y la región.</p>
+            </div>
+            <div class="w-full">
+                <img src="./Docs/Assets/icon5.png" class="mb-2 rounded-md mx-auto h-40" alt="">
+                <a href="" class="font-medium hover:underline textl3 block">Consejo Local</a>
+                <p class="text-sm text-zinc-700">El Consejo Local es un comité que colabora con la directora o director
+                    ejecutivo de cada Servicio Local y que representa los intereses de las comunidades educativas, para
+                    garantizar que se consideren sus necesidades y particularidades. </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto p-5 md:my-10 ">
+        <div class="grid max-w-5xl mx-auto w-full md:grid-cols-2 text-center grid-cols-1 md:gap-10 gap-8">
+
+            <div class="w-full">
+                <p class="text-sm text-[#ff798a] mb-4 font-medium">Revisa quienes lo conforman, y cómo está organizado
+                    aquí
+                <p>
+                <div class="rounded-lg overflow-hidden">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i51-vuQ9cjk?si=ldEtr9l6nNexVQ6H"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="w-full">
+                <p class="text-sm text-[#ff798a] mb-4 font-medium">Aquí puedes encontrar más detalles de cómo funciona
+                <p>
+                <div class="rounded-lg overflow-hidden">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/DGqUZUeezOs?si=r385G8YRolCRqjMT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bg-[#393939] text-white flex flex-col items-center justify-center text-center p-5 py-14">
+        <a href="#" class="transition-all duration-500 hover:text-[#fec96b] font-semibold">Centro de Documentación</a>
+        <p class="mt-10 ">Sitios de interés:</p>
+        <div class="flex flex-wrap text-center justify-center items-center text-zinc-300 mt-5 gap-2 ">
+            <a href="https://educacionpublica.gob.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Dirección de Educación Pública</a> | <a
+                href="https://www.mineduc.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Ministerio de
+                Educación</a> | <a href="https://www.sistemadeadmisionescolar.cl/"
+                class="transition-all duration-500 hover:text-[#fec96b]">Sistema de Admisión Escolar</a> | <a
+                href="https://www.agenciaeducacion.cl/" class="transition-all duration-500 hover:text-[#fec96b]">Agencia
+                de Calidad de la Educación</a>
+            | <a href="https://www.junaeb.cl/" class="transition-all duration-500 hover:text-[#fec96b]"> Junaeb</a>
+        </div>
+        <div class="flex items-center justify-center gap-5 mt-10">
+            <i title="Facebook" class="fa-brands cursor-pointer fa-facebook-f text-2xl text-zinc-300"></i>
+            <i title="Twitter" class="fa-brands cursor-pointer fa-twitter text-2xl text-zinc-300"></i>
+        </div>
+    </div>
+
+    <div id="scrollToTop" class="hidden fastFadeIn">
+        <div
+            class="w-14 h-9 border border-b-0 cursor-pointer flex items-center fixed bottom-0 right-10 bg-zinc-700 text-white justify-center rounded-t-lg">
+            <i class="fa-solid fa-chevron-up pt-1.5"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
+</body>
+
+</html>
